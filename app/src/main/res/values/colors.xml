@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="head_line_white">#ffffff</color>
+    <color name="head_back_blue">#1D76C2</color>
+    <color name="spinner_item">#D8D6DC</color>
+    <color name="head_title_line">#15194a</color>
+    <color name="heavy_recycler_back">#beb8b8</color>
+</resources>

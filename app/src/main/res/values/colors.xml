@@ -8,4 +8,6 @@
     <color name="spinner_item">#D8D6DC</color>
     <color name="head_title_line">#15194a</color>
     <color name="heavy_recycler_back">#beb8b8</color>
+    <color name="user_name_blue">#1926b5</color>
+    <color name="more_text">#2761a3</color>
 </resources>

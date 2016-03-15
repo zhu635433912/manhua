@@ -17,18 +17,16 @@ public class HeavyPresenterImpl implements HeavyPresenter {
     private String type;
     private String tag;
     private String days;
+    private int count;
 
-    public HeavyPresenterImpl(RecentView recentViewView, String type) {
-        this.recentView = recentViewView;
-        this.type = type;
 
-    }
 
-    public HeavyPresenterImpl(RecentView recentViewView, String type, String tag, String days) {
+    public HeavyPresenterImpl(RecentView recentViewView, String type, String tag, String days,int count) {
         this.recentView = recentViewView;
         this.type = type;
         this.tag = tag;
         this.days = days;
+        this.count = count;
     }
 
     @Override
@@ -43,6 +41,6 @@ public class HeavyPresenterImpl implements HeavyPresenter {
             public void onFailure(Call<HeavyEntity> call, Throwable t) {
                 recentView.failed();
             }
-        },tag,days);
+        },tag,days,count);
     }
 }

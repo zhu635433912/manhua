@@ -9,7 +9,7 @@
         android:id="@+id/item_recycler_title"
         android:gravity="center_vertical"
         android:layout_marginLeft="10dp"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:text="1233"
         android:layout_width="match_parent"
         android:layout_height="40dp" />

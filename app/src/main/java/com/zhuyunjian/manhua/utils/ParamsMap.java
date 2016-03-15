@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class ParamsMap extends HashMap<String, String>{
     public ParamsMap() {
-        put(UrlUtils.IID,"3868215609");
+//        put(UrlUtils.IID,"3868215609");
         put(UrlUtils.DEVICE_ID,DeviceUtil.getDeviceId(App_.getApp()));
         put(UrlUtils.AC,"wifi");
         put(UrlUtils.CHANNEL,"baidu");

@@ -9,33 +9,21 @@ import android.view.ViewGroup;
 
 import com.zhuyunjian.manhua.R;
 
-import org.androidannotations.annotations.AfterInject;
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-@EFragment(R.layout.fragment_base)
-public class BaseFragment extends Fragment {
+@EFragment(R.layout.fragment_more)
+public class MoreFragment extends BaseFragment {
 
-
-    @AfterInject
-    public void before(){
-
-    }
-    @AfterViews
-    public final void init(){
-        intiView();
-        initData();
-    }
-
-    public void initData() {
+    @Override
+    public void before() {
 
     }
 
+    @Override
     public void intiView() {
 
     }
-
 }

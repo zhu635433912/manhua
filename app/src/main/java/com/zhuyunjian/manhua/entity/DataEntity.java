@@ -18,8 +18,18 @@ public class DataEntity {
         private long group_id;
         @SerializedName("middle_url_list")
         private List<MiddleEntity> middle_url_list;
+        @SerializedName("large_url_list")
+        private List<LargeEntity> large_url_list;
 
-        public void setTag_id(long tag_id) {
+    public List<LargeEntity> getLarge_url_list() {
+        return large_url_list;
+    }
+
+    public void setLarge_url_list(List<LargeEntity> large_url_list) {
+        this.large_url_list = large_url_list;
+    }
+
+    public void setTag_id(long tag_id) {
             this.tag_id = tag_id;
         }
 

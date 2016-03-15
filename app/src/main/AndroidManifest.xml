@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhuyunjian.manhua">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".App_"
         android:allowBackup="true"
@@ -16,9 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.BaseActivity_"></activity>
-
-
+        <activity android:name=".ui.BaseActivity_" />
+        <activity android:name=".ui.CommentActivity_" />
+        <activity android:name=".ui.GifCommentActivity_"></activity>
     </application>
 
 </manifest>

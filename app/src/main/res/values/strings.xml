@@ -5,7 +5,19 @@
     <string name="meng">萌图</string>
     <string name="gif">动图</string>
     <string name="more">更多</string>
-
+    <string name="title_id">头条账号</string>
+    <string name="my_collect">我的收藏</string>
+    <string name="collect_and_share">收藏同事转发</string>
+    <string name="show_comment">展示图片评论</string>
+    <string name="save_look">保存浏览进度</string>
+    <string name="night_model">夜间模式</string>
+    <string name="new_pic">新图提醒</string>
+    <string name="outline_count">离线下载数目</string>
+    <string name="clear_image">清除图片缓存</string>
+    <string name="suggest">意见反馈</string>
+    <string name="check_version">检查新版本</string>
+    <string name="share_with_friend">推荐给朋友</string>
+    <string name="click_login">点击登录</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

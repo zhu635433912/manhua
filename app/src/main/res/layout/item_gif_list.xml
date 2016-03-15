@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/gif_item_sdView"
+        android:layout_width="110dp"
+        android:layout_height="match_parent" />
+    <TextView
+        android:text="123"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:id="@+id/gif_item_title"
+        android:layout_width="200dp"
+        android:layout_height="match_parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/gif_like_pic"
+        android:src="@mipmap/ic_action_favor_on_normal"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="213"
+        android:id="@+id/gif_item_like_number"
+        android:layout_alignParentBottom="true"
+       android:layout_toRightOf="@id/gif_like_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:src="@mipmap/icon_arrow"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

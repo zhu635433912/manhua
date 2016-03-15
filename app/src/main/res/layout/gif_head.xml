@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/gif_gif_sdview"
+        app:actualImageScaleType="centerInside"
+        app:placeholderImage="@mipmap/bg_loading_in_progress"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <TextView
+        android:gravity="center"
+        android:text="123"
+        android:textSize="15sp"
+        android:id="@+id/gif_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/heavy_recycler_back"/>
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:elevation="5dp"
+            android:id="@+id/gif_ding_card"
+            app:cardCornerRadius="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="3333"
+                android:padding="10dp"
+                android:id="@+id/gif_ding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:elevation="5dp"
+            app:cardCornerRadius="6dp"
+            android:layout_toRightOf="@id/gif_ding_card"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="3333"
+                android:padding="10dp"
+                android:id="@+id/gif_cai_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:elevation="5dp"
+            android:layout_alignParentRight="true"
+            app:cardCornerRadius="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="3333"
+                android:padding="10dp"
+                android:id="@+id/gif_collect_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+</LinearLayout>

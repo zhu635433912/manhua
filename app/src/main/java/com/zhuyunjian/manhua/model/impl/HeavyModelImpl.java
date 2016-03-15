@@ -19,10 +19,15 @@ public class HeavyModelImpl extends BaseModel implements HeavyModel {
     }
 
     @Override
-    public void getHeavyData(Callback<HeavyEntity> callback,String tag,String days) {
+    public void getHeavyData(Callback<HeavyEntity> callback,String tag,String days,int count) {
         ParamsMap map = new ParamsMap();
         map.put(SpinnerData.TAG,tag);
-        map.put(SpinnerData.DAYS,days);
+        if (days.equals("0")) {
+
+        }else {
+            map.put(SpinnerData.DAYS, days);
+        }
+        map.put(UrlUtils.COUNT,count);
         service.getHeavyEntiyt(map).enqueue(callback);
     }
 }

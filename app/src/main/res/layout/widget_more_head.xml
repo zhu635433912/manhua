@@ -9,21 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="48dp">
         <ImageView
-            android:layout_alignParentLeft="true"
-            android:src="@mipmap/btn_offline_normal"
-            android:id="@+id/head_offline_btn"
-            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/title_more"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
             />
-        <include
-            layout="@layout/widget_head_mid"/>
-        <ImageView
-            android:layout_marginRight="10dp"
-            android:id="@+id/head_refresh_image"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_refresh_normal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+        >
     </RelativeLayout>
     <LinearLayout
         android:background="@drawable/head_line"

@@ -43,6 +43,8 @@ public class HeavyFragment extends BaseFragment implements View.OnClickListener 
     private PopupWindow popWindow;
     @ViewById(R.id.head_pop_image)
     ImageView titleImage;
+    @ViewById(R.id.head_refresh_image)
+    ImageView refreshImage;
     private  ListView listView;
     private String tag ;
     private String days;
@@ -59,15 +61,24 @@ public class HeavyFragment extends BaseFragment implements View.OnClickListener 
     public void intiView() {
         data = new SpinnerData().getHeavyData();
         for (int i = 0; i < SpinnerData.heavys.length; i++) {
-            fragments.add(RecentFragment_.builder().arg(SpinnerData.LOG,tag)
+            if (tag == "gif"){
+                fragments.add(GifFragment_.builder().arg(SpinnerData.TAG,tag)
+                        .arg(SpinnerData.DAYS, (String) new SpinnerData().getHeavyData().get(i).get(SpinnerData.DAYS))
+                        .arg(SpinnerData.TYPE, (String) new SpinnerData().getHeavyData().get(i).get(SpinnerData.TYPE)).build());
+
+            }else {
+                fragments.add(RecentFragment_.builder().arg(SpinnerData.TAG,tag)
                     .arg(SpinnerData.DAYS, (String) new SpinnerData().getHeavyData().get(i).get(SpinnerData.DAYS))
                     .arg(SpinnerData.TYPE, (String) new SpinnerData().getHeavyData().get(i).get(SpinnerData.TYPE)).build());
+            }
         }
+
         fragmentUtil = new FragmentUtil(fragments, getChildFragmentManager(), days, R.id.heavy_container);
         fragmentUtil.show(0);
         showWindow();
         linearLayout.setOnClickListener(this);
     }
+
 
 
     @Override

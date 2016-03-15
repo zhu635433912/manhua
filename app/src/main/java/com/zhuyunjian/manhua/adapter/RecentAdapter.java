@@ -1,7 +1,6 @@
 package com.zhuyunjian.manhua.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.squareup.picasso.Picasso;
 import com.zhuyunjian.manhua.R;
 import com.zhuyunjian.manhua.api.OnRecyclerViewItemClickListener;
 import com.zhuyunjian.manhua.entity.DataEntity;
@@ -29,7 +28,7 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentView
         this.context = context;
     }
 
-    public void setListener(OnRecyclerViewItemClickListener listener) {
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
         this.listener = listener;
     }
 
@@ -42,8 +41,10 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentView
 
     @Override
     public void onBindViewHolder(RecentViewHolder holder, int position) {
-        holder.simpleDraweeView.setImageURI(Uri.parse(list.get(position).getMiddle_url_list().get(0).getUrl()));
+        Picasso.with(context).load(list.get(position).getMiddle_url_list().get(0).getUrl()).into(holder.simpleDraweeView);
+//        holder.simpleDraweeView.setImageURI(Uri.parse(list.get(position).getMiddle_url_list().get(0).getUrl()));
         holder.titleText.setText(list.get(position).getDescription());
+        holder.itemView.setTag(list.get(position));
 
     }
 
@@ -54,17 +55,21 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentView
 
     @Override
     public void onClick(View v) {
-
+        if (listener != null){
+            listener.onItemClick(v, (DataEntity) v.getTag());
+        }
     }
 
+
+
     public static class RecentViewHolder extends RecyclerView.ViewHolder{
-        private SimpleDraweeView simpleDraweeView;
+        private ImageView simpleDraweeView;
         private TextView titleText,numberText;
         private ImageView likeImage,shareImage;
         private LinearLayout linearLayout;
         public RecentViewHolder(View itemView) {
             super(itemView);
-            simpleDraweeView = (SimpleDraweeView) itemView.findViewById(R.id.item_recycler_sdview);
+            simpleDraweeView = (ImageView) itemView.findViewById(R.id.item_recycler_sdview);
             titleText = (TextView) itemView.findViewById(R.id.item_recycler_title);
             numberText = (TextView) itemView.findViewById(R.id.item_bottom_number);
             likeImage = (ImageView) itemView.findViewById(R.id.item_like_pic);

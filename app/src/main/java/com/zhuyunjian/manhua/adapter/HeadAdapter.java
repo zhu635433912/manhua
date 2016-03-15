@@ -32,7 +32,7 @@ public class HeadAdapter extends ListBaseAdapter {
         }
         holder = (ViewHolder) convertView.getTag();
         holder.imageView = (ImageView) convertView.findViewById(R.id.head_list_image);
-        holder.imageView.setImageResource((Integer) list.get(position).get(SpinnerData.LOG));
+        holder.imageView.setImageResource((Integer) list.get(position).get(SpinnerData.TAG));
         return convertView;
     }
 

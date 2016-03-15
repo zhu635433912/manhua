@@ -9,6 +9,7 @@ import com.zhuyunjian.library.FragmentTabUtils;
 import com.zhuyunjian.manhua.AppConstants;
 import com.zhuyunjian.manhua.R;
 import com.zhuyunjian.manhua.fragment.HeavyFragment_;
+import com.zhuyunjian.manhua.fragment.MoreFragment_;
 
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
@@ -28,7 +29,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(HeavyFragment_.builder().arg(AppConstants.FRAG_TYPE_ID,AppConstants.TAG_COMIC).build());
         fragments.add(HeavyFragment_.builder().arg(AppConstants.FRAG_TYPE_ID,AppConstants.TAG_MENG).build());
         fragments.add(HeavyFragment_.builder().arg(AppConstants.FRAG_TYPE_ID,AppConstants.TAG_GIF).build());
-        fragments.add(HeavyFragment_.builder().arg(AppConstants.FRAG_TYPE_ID,AppConstants.TAG_MORE).build());
+        fragments.add(MoreFragment_.builder().arg(AppConstants.FRAG_TYPE_ID,AppConstants.TAG_MORE).build());
         new FragmentTabUtils(this,getSupportFragmentManager(),radioGroup,fragments,R.id.main_container);
     }
 }

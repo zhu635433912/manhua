@@ -5,7 +5,7 @@ package com.zhuyunjian.manhua.utils;
  */
 public class UrlUtils {
     public static final String BASE_URL = "http://ic.snssdk.com/2/image/";
-
+    public static final String COMMENT_BASE = "http://ic.snssdk.com/2/";
     public static final String IID = "iid";
 
     public static final String DEVICE_ID = "device_id";
@@ -19,5 +19,6 @@ public class UrlUtils {
     public static final String OS_API = "os_api";
     public static final String OS_VERSION = "os_version";
     public static final String OPENUDID = "openudid";
+    public static final String COUNT = "count";
 
 }

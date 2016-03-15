@@ -1,5 +1,6 @@
 package com.zhuyunjian.manhua.model;
 
+import com.zhuyunjian.manhua.model.impl.CommentModelImpl;
 import com.zhuyunjian.manhua.model.impl.HeavyModelImpl;
 
 /**
@@ -16,5 +17,9 @@ public class ModelFactory {
 
     public HeavyModelImpl getHeavyModel(String type){
         return new HeavyModelImpl(type);
+    }
+
+    public CommentModelImpl getCommentModel(){
+        return new CommentModelImpl();
     }
 }

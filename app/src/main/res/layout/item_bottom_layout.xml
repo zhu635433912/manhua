@@ -50,8 +50,9 @@
             android:layout_width="0dp"
             android:src="@mipmap/ic_flow_cell_share_normal"
             android:layout_weight="1"
+            android:scaleType="center"
             android:layout_gravity="center"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

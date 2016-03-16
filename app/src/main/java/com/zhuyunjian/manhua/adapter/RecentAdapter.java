@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.zhuyunjian.manhua.R;
@@ -22,6 +23,7 @@ import java.util.List;
 public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentViewHolder> implements View.OnClickListener {
     private List<DataEntity> list;
     private Context context;
+    private boolean isLike;
     private OnRecyclerViewItemClickListener listener;
     public RecentAdapter(List<DataEntity> list, Context context) {
         this.list = list;
@@ -40,10 +42,32 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.RecentView
     }
 
     @Override
-    public void onBindViewHolder(RecentViewHolder holder, int position) {
+    public void onBindViewHolder(final RecentViewHolder holder, final int position) {
         Picasso.with(context).load(list.get(position).getMiddle_url_list().get(0).getUrl()).into(holder.simpleDraweeView);
 //        holder.simpleDraweeView.setImageURI(Uri.parse(list.get(position).getMiddle_url_list().get(0).getUrl()));
         holder.titleText.setText(list.get(position).getDescription());
+        holder.numberText.setText(list.get(position).getRepin_count()+"");
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLike) {
+                    isLike = false;
+                    holder.likeImage.setImageResource(R.mipmap.ic_flow_cell_favor_normal);
+                    holder.numberText.setText(list.get(position).getRepin_count()+"");
+                }
+                else {
+                    isLike = true;
+                    holder.numberText.setText(list.get(position).getRepin_count()+1+"");
+                    holder.likeImage.setImageResource(R.mipmap.ic_flow_cell_favor_selected_normal);
+                }
+            }
+        });
+        holder.shareImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "分享按钮", Toast.LENGTH_SHORT).show();
+            }
+        });
         holder.itemView.setTag(list.get(position));
 
     }

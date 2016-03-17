@@ -18,7 +18,7 @@
             <ImageView
                 android:id="@+id/item_recycler_sdview"
                 android:layout_width="match_parent"
-                android:scaleType="centerInside"
+                android:scaleType="fitXY"
                 android:layout_height="wrap_content" />
             <include layout="@layout/item_bottom_layout"/>
         </LinearLayout>

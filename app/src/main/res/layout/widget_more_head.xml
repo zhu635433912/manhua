@@ -11,6 +11,7 @@
         <ImageView
             android:layout_centerInParent="true"
             android:src="@mipmap/title_more"
+            android:id="@+id/more_title_image"
             android:layout_width="120dp"
             android:layout_height="match_parent"
             />

@@ -45,6 +45,8 @@ public class HeavyFragment extends BaseFragment implements View.OnClickListener 
     ImageView titleImage;
     @ViewById(R.id.head_refresh_image)
     ImageView refreshImage;
+    @ViewById(R.id.head_offline_btn)
+    ImageView offlineImage;
     private  ListView listView;
     private String tag ;
     private String days;
@@ -117,5 +119,13 @@ public class HeavyFragment extends BaseFragment implements View.OnClickListener 
         popWindow.setOutsideTouchable(true);
     }
 
-
+    @Override
+    public void initData() {
+        offlineImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+    }
 }

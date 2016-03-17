@@ -26,10 +26,12 @@
             app:cardElevation="4dp"
             >
             <LinearLayout
+
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="102dp">
                 <LinearLayout
+                    android:id="@+id/more_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -60,6 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"/>
                 <LinearLayout
+                    android:id="@+id/more_collect"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -99,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="357dp">
                 <CheckBox
+                    android:id="@+id/more_collect_and_share"
                     android:layout_width="wrap_content"
                     android:textSize="20sp"
                     android:layout_marginLeft="10dp"
@@ -112,6 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
                 <CheckBox
+                    android:id="@+id/more_show_comment"
                     android:layout_width="wrap_content"
                     android:textSize="20sp"
                     android:checked="true"
@@ -126,6 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
                 <CheckBox
+                    android:id="@+id/more_save_progress"
                     android:layout_width="wrap_content"
                     android:textSize="20sp"
                     android:layout_marginLeft="10dp"
@@ -140,6 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
                 <CheckBox
+                    android:id="@+id/more_night_model"
                     android:layout_width="wrap_content"
                     android:textSize="20sp"
                     android:layout_marginLeft="10dp"
@@ -153,6 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
                 <CheckBox
+                    android:id="@+id/more_new_pic"
                     android:layout_width="wrap_content"
                     android:textSize="20sp"
                     android:layout_marginLeft="10dp"
@@ -167,6 +175,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
                 <LinearLayout
+                    android:id="@+id/more_outline_number"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -197,6 +206,7 @@
                     android:layout_height="1dp"
                     android:background="@color/heavy_recycler_back"/>
                 <LinearLayout
+                    android:id="@+id/more_clear_cache"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -236,6 +246,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="152dp">
                 <LinearLayout
+                    android:id="@+id/more_suggest"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -266,6 +277,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
                 <LinearLayout
+                    android:id="@+id/more_check_version"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
@@ -296,6 +308,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
                 <LinearLayout
+                    android:id="@+id/more_recommed"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">

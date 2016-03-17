@@ -21,6 +21,8 @@ import com.zhuyunjian.manhua.adapter.RecentAdapter;
 import com.zhuyunjian.manhua.api.OnRecyclerViewItemClickListener;
 import com.zhuyunjian.manhua.entity.DataEntity;
 import com.zhuyunjian.manhua.entity.HeavyEntity;
+import com.zhuyunjian.manhua.entity.UrlEntity;
+import com.zhuyunjian.manhua.function.RefreshEntity;
 import com.zhuyunjian.manhua.presenter.HeavyPresenter;
 import com.zhuyunjian.manhua.presenter.impl.HeavyPresenterImpl;
 import com.zhuyunjian.manhua.ui.CommentActivity_;
@@ -29,6 +31,8 @@ import com.zhuyunjian.manhua.view.RecentView;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +54,7 @@ public class RecentFragment extends BaseFragment implements RecentView, SwipeRef
     private HeavyPresenter presenter;
     @Override
     public void before() {
+        EventBus.getDefault().register(this);
         tag = getArguments().getString(SpinnerData.TAG);
         days = getArguments().getString(SpinnerData.DAYS);
         type = getArguments().getString(SpinnerData.TYPE);
@@ -60,6 +65,7 @@ public class RecentFragment extends BaseFragment implements RecentView, SwipeRef
 
     @Override
     public void intiView() {
+        EventBus.getDefault().post(new UrlEntity(tag,type,days),AppConstants.URL_RETURN_DOWN);
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
         adapter = new RecentAdapter(list,getContext());
@@ -80,6 +86,7 @@ public class RecentFragment extends BaseFragment implements RecentView, SwipeRef
                 list.add(entity.getData().get(i));
             }
         }
+        EventBus.getDefault().post(new RefreshEntity(true),AppConstants.REFRESH_TAG_RETURN);
         srfLayout.setRefreshing(false);
         adapter.notifyDataSetChanged();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -134,5 +141,10 @@ public class RecentFragment extends BaseFragment implements RecentView, SwipeRef
                 Toast.makeText(getContext(), ".....", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Subscriber(tag = AppConstants.REFRESH_TAG_TO)
+    public void refresh(RefreshEntity entity){
+        new HeavyPresenterImpl(this,type,tag,days,20).getHeavy();
     }
 }

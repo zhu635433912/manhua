@@ -19,6 +19,7 @@ import com.zhuyunjian.manhua.adapter.GifAdapter;
 import com.zhuyunjian.manhua.adapter.RecentAdapter;
 import com.zhuyunjian.manhua.entity.DataEntity;
 import com.zhuyunjian.manhua.entity.HeavyEntity;
+import com.zhuyunjian.manhua.entity.UrlEntity;
 import com.zhuyunjian.manhua.presenter.HeavyPresenter;
 import com.zhuyunjian.manhua.presenter.impl.HeavyPresenterImpl;
 import com.zhuyunjian.manhua.ui.CommentActivity_;
@@ -28,6 +29,7 @@ import com.zhuyunjian.manhua.view.RecentView;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -48,6 +50,7 @@ public class GifFragment extends BaseFragment implements RecentView,PullToRefres
     private HeavyPresenter presenter;
     @Override
     public void before() {
+        EventBus.getDefault().register(this);
         tag = getArguments().getString(SpinnerData.TAG);
         days = getArguments().getString(SpinnerData.DAYS);
         type = getArguments().getString(SpinnerData.TYPE);
@@ -58,6 +61,7 @@ public class GifFragment extends BaseFragment implements RecentView,PullToRefres
 
     @Override
     public void intiView() {
+        EventBus.getDefault().post(new UrlEntity(tag,type,days),AppConstants.URL_RETURN_DOWN);
         listView.setMode(PullToRefreshBase.Mode.BOTH);
         listView.setOnRefreshListener(this);
         adapter = new GifAdapter(list,getContext());
@@ -111,5 +115,11 @@ public class GifFragment extends BaseFragment implements RecentView,PullToRefres
                 .extra(AppConstants.GROUP_ID,list.get(position-1).getGroup_id()+"")
                 .extra(AppConstants.TAG_HEAVY,days)
                 .extra(AppConstants.SORT,sort).get());
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 }

@@ -1,5 +1,7 @@
 package com.zhuyunjian.manhua;
 
+import java.io.File;
+
 /**
  * Created by dell on 2016/3/14.
  */
@@ -21,5 +23,16 @@ public class AppConstants {
     public static final String COUNT = "count";
     public static final String OFFSET = "offset";
     public static final String SORT = "sort";
+
+    public static final String REFRESH_TAG_RETURN = "refresh_tag_return";
+    public static final String URL_RETURN_DOWN = "url_return_down";
+    public static final String URL_RETURN_TO = "url_return_to";
+    public static final String REFRESH_TAG_TO = " refresh_tag_to";
+    public static final String USER_NAME = "user_name";
+    public static final String IMAGE_CACHE = App_.getInstance().getCacheDir().getAbsolutePath()+"";
+    public static File getCacheFile(){
+        File file = new File(IMAGE_CACHE);
+        return file;
+    }
 
 }

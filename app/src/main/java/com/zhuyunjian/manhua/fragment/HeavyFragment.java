@@ -1,9 +1,13 @@
 package com.zhuyunjian.manhua.fragment;
 
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -19,14 +23,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhuyunjian.library.StartUtil;
 import com.zhuyunjian.manhua.AppConstants;
 import com.zhuyunjian.manhua.R;
 import com.zhuyunjian.manhua.adapter.HeadAdapter;
+import com.zhuyunjian.manhua.download.DownLoadMultipleService;
+import com.zhuyunjian.manhua.entity.UrlEntity;
+import com.zhuyunjian.manhua.function.RefreshEntity;
+import com.zhuyunjian.manhua.service.DownloadService;
 import com.zhuyunjian.manhua.utils.FragmentUtil;
+import com.zhuyunjian.manhua.utils.RefreshUtil;
 import com.zhuyunjian.manhua.utils.SpinnerData;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +49,7 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 @EFragment(R.layout.fragment_heavy)
-public class HeavyFragment extends BaseFragment implements View.OnClickListener {
+public class HeavyFragment extends BaseFragment implements View.OnClickListener, ServiceConnection {
     @ViewById(R.id.head_pop)
     LinearLayout linearLayout;
     private PopupWindow popWindow;
@@ -51,11 +63,13 @@ public class HeavyFragment extends BaseFragment implements View.OnClickListener 
     private String tag ;
     private String days;
     private String type;
+    private UrlEntity urlEntity;
     private List<Map<String,Object>> data ;
     private List<Fragment> fragments = new ArrayList<>();
     private FragmentUtil fragmentUtil;
     @Override
     public void before() {
+        EventBus.getDefault().register(this);
        tag = getArguments().getString(AppConstants.FRAG_TYPE_ID);
     }
 
@@ -124,8 +138,42 @@ public class HeavyFragment extends BaseFragment implements View.OnClickListener 
         offlineImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Toast.makeText(getContext(), "下载中", Toast.LENGTH_SHORT).show();
+                getContext().startService(new Intent(getContext(),DownloadService.class));
+                EventBus.getDefault().post(urlEntity,AppConstants.REFRESH_TAG_TO);
             }
         });
+//        RefreshUtil.refreshView(refreshImage);
+        refreshImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshImage.setImageResource(R.mipmap.ic_refresh_pressed);
+                EventBus.getDefault().post(new RefreshEntity(true), AppConstants.REFRESH_TAG_TO);
+            }
+        });
+    }
+    @Subscriber(tag = AppConstants.REFRESH_TAG_RETURN)
+    public void refreshReturn(RefreshEntity entity){
+        refreshImage.setImageResource(R.mipmap.ic_refresh_normal);
+    }
+    @Subscriber(tag = AppConstants.URL_RETURN_DOWN)
+    public void tagReturn(UrlEntity entity){
+        tag = entity.getTag();
+        days = entity.getDays();
+        type = entity.getType();
+        int count = StartUtil.getCount(getContext());
+        urlEntity = new UrlEntity(tag,type,days,count);
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        String className = name.getClassName();
+        if (className.equals(DownloadService.class.getName())) {
+        }
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
     }
 }

@@ -7,6 +7,20 @@ public class User {
 
     private int resId;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    private String name;
+
     public int getResId() {
         return resId;
     }

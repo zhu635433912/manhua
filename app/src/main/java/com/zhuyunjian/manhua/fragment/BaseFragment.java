@@ -12,6 +12,7 @@ import com.zhuyunjian.manhua.R;
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+import org.simple.eventbus.EventBus;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,10 +23,11 @@ public class BaseFragment extends Fragment {
 
     @AfterInject
     public void before(){
-
+        EventBus.getDefault().register(getContext());
     }
     @AfterViews
     public final void init(){
+
         intiView();
         initData();
     }
@@ -37,5 +39,6 @@ public class BaseFragment extends Fragment {
     public void intiView() {
 
     }
+
 
 }

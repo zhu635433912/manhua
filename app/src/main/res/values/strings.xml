@@ -5,9 +5,9 @@
     <string name="meng">萌图</string>
     <string name="gif">动图</string>
     <string name="more">更多</string>
-    <string name="title_id">头条账号</string>
+    <string name="title_id">账号有没有</string>
     <string name="my_collect">我的收藏</string>
-    <string name="collect_and_share">收藏同事转发</string>
+    <string name="collect_and_share">收藏同时转发</string>
     <string name="show_comment">展示图片评论</string>
     <string name="save_look">保存浏览进度</string>
     <string name="night_model">夜间模式</string>
@@ -18,6 +18,13 @@
     <string name="check_version">检查新版本</string>
     <string name="share_with_friend">推荐给朋友</string>
     <string name="click_login">点击登录</string>
+    <string name="login_title">授权登录</string>
+    <string name="login_tencent">腾讯QQ</string>
+    <string name="login_xinlang">新浪微博</string>
+    <string name="login_weibo">腾讯微博</string>
+    <string name="login_renren">人人网</string>
+    <string name="login_kaixin">开心网</string>
+    <string name="why_to_login">为什么要授权?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

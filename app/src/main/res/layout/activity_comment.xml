@@ -7,9 +7,19 @@
     tools:context="com.zhuyunjian.manhua.ui.CommentActivity">
 
     <include layout="@layout/widget_comment_head"/>
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/comments_ptr_listview"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/comments_ptr_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <View
+            android:id="@+id/comment_back"
+            android:background="@color/gray_alpha_light"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
 
 </LinearLayout>

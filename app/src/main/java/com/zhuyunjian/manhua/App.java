@@ -1,12 +1,12 @@
 package com.zhuyunjian.manhua;
 
 import android.app.Application;
-import android.os.Environment;
-
-import com.facebook.cache.disk.DiskCacheConfig;
-import com.facebook.drawee.backends.pipeline.Fresco;
+import com.zhuyunjian.manhua.utils.FrescoHelper;
 
 import org.androidannotations.annotations.EApplication;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.sharesdk.framework.ShareSDK;
 
 /**
  * Created by dell on 2016/3/14.
@@ -19,7 +19,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-        Fresco.initialize(this);
+        JPushInterface.init(this);
+        FrescoHelper.getInstance().init(this);
+        ShareSDK.initSDK(this);
+        JPushInterface.setDebugMode(BuildConfig.DEBUG);
+
         //默认图片的磁盘配置
 //        DiskCacheConfig diskCacheConfig = DiskCacheConfig.newBuilder(this)
 //                .setBaseDirectoryPath(Environment.getExternalStorageDirectory().getAbsoluteFile())//缓存图片基路径

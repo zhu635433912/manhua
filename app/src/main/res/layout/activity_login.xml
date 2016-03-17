@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zhuyunjian.manhua.ui.LoginActivity">
+
+    <include layout="@layout/widget_head_login"/>
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/zone_btn"
+            android:drawableTop="@mipmap/account_icon_qzone"
+            android:text="@string/login_tencent"
+            android:background="@color/head_line_white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_height="60dp" />
+        <Button
+            android:id="@+id/xinlang_btn"
+            android:drawableTop="@mipmap/account_icon_weibo"
+            android:text="@string/login_xinlang"
+            android:background="@color/head_line_white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_height="60dp" />
+        <Button
+            android:id="@+id/tencent_btn"
+            android:drawableTop="@mipmap/account_icon_tencent"
+            android:text="@string/login_weibo"
+            android:background="@color/head_line_white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_height="60dp" />
+        <Button
+            android:id="@+id/renren_btn"
+            android:drawableTop="@mipmap/account_icon_renren"
+            android:text="@string/login_renren"
+            android:background="@color/head_line_white"
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/kaixin_btn"
+        android:drawableTop="@mipmap/account_icon_kaixin"
+        android:text="@string/login_kaixin"
+        android:layout_marginLeft="20dp"
+        android:background="@color/head_line_white"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp" />
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_marginTop="5dp"
+            android:background="@color/heavy_recycler_back"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:background="@color/white"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_centerInParent="true"
+            android:textSize="15sp"
+            android:text="@string/why_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginTop="10dp"
+            android:background="@color/heavy_recycler_back"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </RelativeLayout>
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/why2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

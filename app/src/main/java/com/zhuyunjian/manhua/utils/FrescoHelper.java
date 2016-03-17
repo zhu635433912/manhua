@@ -88,6 +88,7 @@ public class FrescoHelper {
         };
 
         //小图片的磁盘配置
+        String s = context.getApplicationContext().getExternalCacheDir().getAbsolutePath()+context.getApplicationContext().getCacheDir().getAbsolutePath();
         DiskCacheConfig diskSmallCacheConfig = DiskCacheConfig.newBuilder(context)
                 .setBaseDirectoryPath(context.getApplicationContext().getCacheDir())//缓存图片基路径
                 .setBaseDirectoryName(IMAGE_PIPELINE_SMALL_CACHE_DIR)//文件夹名

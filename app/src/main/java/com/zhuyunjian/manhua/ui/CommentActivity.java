@@ -15,11 +15,13 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.squareup.picasso.Picasso;
+import com.zhuyunjian.library.StartUtil;
 import com.zhuyunjian.manhua.AppConstants;
 import com.zhuyunjian.manhua.R;
 import com.zhuyunjian.manhua.adapter.CommentAdapter;
 import com.zhuyunjian.manhua.entity.CommentEntity;
 import com.zhuyunjian.manhua.entity.UserEntity;
+import com.zhuyunjian.manhua.function.BackgroundEntity;
 import com.zhuyunjian.manhua.presenter.CommentPresenter;
 import com.zhuyunjian.manhua.presenter.impl.CommentPresenterImpl;
 import com.zhuyunjian.manhua.view.CommentView;
@@ -27,6 +29,8 @@ import com.zhuyunjian.manhua.view.CommentView;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +53,8 @@ public class CommentActivity extends BaseActivity implements CommentView,PullToR
     PullToRefreshListView ptrListView;
     @ViewById(R.id.head_mid_pic)
     ImageView midImage;
+    @ViewById(R.id.comment_back)
+    View view;
     private View headView;
     private CommentPresenterImpl presenter;
     private String imageUrl,title,ding,cai,collect,group_id,sort,days;
@@ -58,6 +64,7 @@ public class CommentActivity extends BaseActivity implements CommentView,PullToR
     private List<UserEntity> list = new ArrayList<>();
     @Override
     public void before() {
+        EventBus.getDefault().register(this);
         imageUrl = getIntent().getStringExtra(AppConstants.IMAGE_URL);
         title = getIntent().getStringExtra(AppConstants.TITLE);
         ding = getIntent().getStringExtra(AppConstants.DING_COUNT);
@@ -71,6 +78,8 @@ public class CommentActivity extends BaseActivity implements CommentView,PullToR
 
     @Override
     public void initView() {
+        boolean isLight = StartUtil.isLight(this);
+        view.setVisibility(isLight ?  View.GONE : View.VISIBLE);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         headView = inflater.inflate(R.layout.comment_head,null);
         sdView = (ImageView) headView.findViewById(R.id.comment_gif_sdview);
@@ -143,5 +152,11 @@ public class CommentActivity extends BaseActivity implements CommentView,PullToR
         new CommentPresenterImpl(this, group_id, sort, count, offset).getComment();
     }
 
-
+    @Subscriber
+    public void changeBackground(BackgroundEntity entity){
+        if (entity.isNight())
+            view.setVisibility(View.VISIBLE);
+        else
+            view.setVisibility(View.GONE);
+    }
 }
